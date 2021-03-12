@@ -2,11 +2,13 @@ $(function(){
 
     var nextButton = $('div.next');
     var prevButton = $('div.prev');
-    
+    var bullets = $('i.fa-circle');
 
+    $(bullets).click({mode: "bullet",targetBullet: $(this)}, changeImage);
 
     nextButton.click({mode: "next"}, changeImage);
     prevButton.click({mode: "prev"}, changeImage);
+
 
     function changeImage(event){
         var activeImage = $('.images img.active');
@@ -44,7 +46,9 @@ $(function(){
                     //bullet
                     $(bulletActive).toggleClass("active").prev().toggleClass("active")
                 }
-
+        }
+        else{
+            console.log(event.data.targetBullet)
         }
     
     }
