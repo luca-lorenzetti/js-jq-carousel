@@ -10,6 +10,14 @@ $(function(){
     nextButton.click({mode: "next"}, changeImage);
     prevButton.click({mode: "prev"}, changeImage);
 
+    $(window).keydown(function(e){
+        if( e.keyCode == 37){
+            prevButton.click();
+        }
+        else if(e.keyCode == 39){
+            nextButton.click();
+        }
+    });
 
     function checkIsActive(){
 
@@ -22,6 +30,7 @@ $(function(){
 
     function changeImage(event){
         var index = checkIsActive(images);
+
 
         if( event.data.mode == "next" ){
             if( $(images[index]).hasClass("last")  ){
@@ -47,7 +56,7 @@ $(function(){
                     $(images[images.length-1]).toggleClass("active");
                     //bullet
                     $(bullets[index]).toggleClass("active");
-                    $(bullets[bullets.index-1]).toggleClass("active");
+                    $(bullets[bullets.length-1]).toggleClass("active");
                 }
                 else{
                     //immagine
